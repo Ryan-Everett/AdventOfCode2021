@@ -90,24 +90,6 @@ public class Day1 {
         return ans;
     }
 
-    // static int numIncs2(LinkedList<Integer> list) {
-    //     Iterator<Integer> iter = list.iterator();
-    //     int back = iter.next();
-    //     int middle = iter.next();
-    //     int front = iter.next();
-    //     int count = 0;
-    //     while (iter.hasNext()){
-    //         int next = iter.next();
-    //         if(back < next){   //If A < B
-    //             count++;
-    //         }
-    //         back = middle;
-    //         middle = front;
-    //         front = next;
-            
-    //     }
-    //     return count;
-    // }
     //Doing stuff separately 
     static int[] readArrFromFile(String fileName) throws IOException{
         Path path = Paths.get(fileName);
