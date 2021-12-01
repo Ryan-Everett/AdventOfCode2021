@@ -9,11 +9,11 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 /*
-Can solve the problem in three ways:
+Can solve the problem in four ways:
 All at once using a cyclic array,
-All at once using variables
-Split into sections using an array
-Split into sections using a linked list
+All at once using variables to hold window
+Split into sections and use an array
+Split into sections and use a linked list
 
 Benchmarking average time taken for a solve (5000 trials ran):
         QS1  took 0.981 ms
