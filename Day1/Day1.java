@@ -4,6 +4,14 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Day1 {
+
+    /*
+    For the second part: 
+            Let A = x[i-1] + x[i] + x[i+1], and B = x[i] + x[i+1] + x[i+2]. 
+                (A < B) iff (x[i-1] + x[i] + x[i+1]) < (x[i] + x[i+1] + x[i+2]) 
+                        iff x[i-1] < x[i+1]
+    
+    */
     static int[] solve(String fileName) throws IOException{
         int[] ans = new int[2];
         Scanner sc = new Scanner(new File(fileName));
