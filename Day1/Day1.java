@@ -1,7 +1,5 @@
 package Day1;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,11 +9,11 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 /*
-Can solve the problem in three ways:
+Can solve the problem in four ways:
 All at once using a cyclic array,
-All at once using variables
-Split into sections using an array
-Split into sections using a linked list
+All at once using variables to hold window
+Split into sections and use an array
+Split into sections and use a linked list
 
 Benchmarking average time taken for a solve (5000 trials ran):
         QS1  took 0.981 ms
@@ -90,24 +88,6 @@ public class Day1 {
         return ans;
     }
 
-    // static int numIncs2(LinkedList<Integer> list) {
-    //     Iterator<Integer> iter = list.iterator();
-    //     int back = iter.next();
-    //     int middle = iter.next();
-    //     int front = iter.next();
-    //     int count = 0;
-    //     while (iter.hasNext()){
-    //         int next = iter.next();
-    //         if(back < next){   //If A < B
-    //             count++;
-    //         }
-    //         back = middle;
-    //         middle = front;
-    //         front = next;
-            
-    //     }
-    //     return count;
-    // }
     //Doing stuff separately 
     static int[] readArrFromFile(String fileName) throws IOException{
         Path path = Paths.get(fileName);
