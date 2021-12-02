@@ -5,26 +5,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Day2 {
-    static int solve1(String fileName) throws IOException {
-        Scanner sc = new Scanner(new File(fileName));
-        int x = 0;
-        int y = 0;
-
-        while (sc.hasNextLine()){
-            String dir = sc.next();
-            int mag = sc.nextInt();
-            switch (dir){
-                case "forward":
-                    x += mag; break;
-                case "up":
-                    y -= mag; break;
-                case "down":
-                    y += mag; break;
-            }
-        }
-        return x*y;
-    }
-    static int solve2(String fileName) throws IOException {
+    static int[] solve(String fileName) throws IOException {
         Scanner sc = new Scanner(new File(fileName));
         int x = 0;
         int y = 0;
@@ -41,11 +22,11 @@ public class Day2 {
                     aim += mag; break;
             }
         }
-        return x*y;
+        return new int[] {x*aim,x*y};
     }
     public static void main(String[] args) throws IOException{
         String fileName = "Day2/Day2Input.txt";
-        System.out.println(solve1(fileName));
-        System.out.println(solve2(fileName));
+        int[] ans = solve(fileName);
+        System.out.println("First answer = " + ans[0] + "\nSecond answer = " + ans[1]);
     }
 }
