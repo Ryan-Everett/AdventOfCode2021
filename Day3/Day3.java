@@ -71,8 +71,8 @@ public class Day3 {
         int i = 0;
         while((numList1.size() > 1)){ //Find 02
             final int j = i;    //Make a final copy of i to use in the lambdas, to please the jvm
-            final int mcv = mcv(numList1,j,1);
-            numList1.removeIf(num -> num.charAt(j) == mcv);
+            final int lcv = mcv(numList1,j,1);
+            numList1.removeIf(num -> num.charAt(j) == lcv);
             i++;
         }
 
