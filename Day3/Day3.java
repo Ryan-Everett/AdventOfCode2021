@@ -42,21 +42,22 @@ public class Day3 {
     }
 
     //Return 1 if more '1's than '0's, 0 if equal amounts, -1 otherwise
-    static int mcv (LinkedList<String> nums, int index){
+    static int mcv (LinkedList<String> nums, int index, int mode){
         Iterator<String> iter = nums.iterator();
         int oneCount = 0;
         int len = 0;
         while(iter.hasNext()){
             oneCount += iter.next().charAt(index) - '0'; len++;
         }
-        if (oneCount*2 > len){
-            return 1;
+        int v = 0;
+        if (oneCount*2 >= len){
+            v = 1;
         }
-        else if (oneCount*2 == len){
-            return -1;
+        if (mode == 1){
+            return v;
         }
         else {
-            return 0;
+            return 1 -v;
         }
     }
     static int solve2(String fileName) throws IOException{
@@ -72,7 +73,7 @@ public class Day3 {
         int i = 0;
         while((numList1.size() > 1)){ //Find 02
             final int j = i;    //Make a final copy of i to use in the lambdas, to please the jvm
-            int mcv1 = mcv(numList1, i);
+            int mcv1 = mcv(numList1, i,0);
             if (mcv1 == 0){
                 numList1.removeIf(num -> num.charAt(j) == '1');
             }
@@ -85,7 +86,7 @@ public class Day3 {
         i = 0;
         while((numList2.size() > 1)){  //Find co2
             final int j = i;
-            int mcv2 = mcv(numList2, i);
+            int mcv2 = mcv(numList2, i,1);
             if (mcv2 == 0){
                 numList2.removeIf(num -> num.charAt(j) == '0');
             }
@@ -108,7 +109,7 @@ public class Day3 {
         return o2*co2;
     }
     public static void main(String[] args) throws IOException{
-        String fileName = "Day3/Day3Input.txt";
+        String fileName = "Inputs/Day3Input.txt";
         System.out.println(solve1(fileName));
         System.out.println(solve2(fileName));
     }

@@ -39,7 +39,7 @@ public class Day1 {
         return ans;
     }
     public static void main(String[] args) throws IOException{
-        String fileName = "Day1/Day1Input.txt";
+        String fileName = "Inputs/Day1Input.txt";
         int[] ans = solve(fileName);
         System.out.println("Answers: Part 1 = " + ans[0] + ", Part 2 = " + ans[1]);
     }

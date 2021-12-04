@@ -174,7 +174,7 @@ public class BonusBenchmarking{
         System.out.println("Benchmarking average time taken for 15000 solves:\n\tQuick took   "+(t1/15000.0d)+" ms\n\tCyclic took  "+(t2/15000.0d)+" ms\n\tArray took   "+(t3/15000.0d)+" ms\n\tList took    "+(t4/15000.0d)+ " ms");
     }
     public static void main(String[] args) throws IOException{
-        String fileName = "Day1/Day1Input.txt";
+        String fileName = "Inputs/Day1Input.txt";
         int[] ans = quickSolve(fileName);
         System.out.println("Answers: Part 1 = " + ans[0] + ", Part 2 = " + ans[1]);
         benchMark(fileName);
