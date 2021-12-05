@@ -41,24 +41,22 @@ public class Day3 {
         return gamma*epsilon;
     }
 
-    //Return 1 if more '1's than '0's, 0 if equal amounts, -1 otherwise
-    static int mcv (LinkedList<String> nums, int index, int mode){
+    //Return 1 if more '1's than '0's, '0' otherwise. Setting mode to 1 switches this behaviour
+    static char mcv (LinkedList<String> nums, int index, int mode){
         Iterator<String> iter = nums.iterator();
         int oneCount = 0;
         int len = 0;
         while(iter.hasNext()){
             oneCount += iter.next().charAt(index) - '0'; len++;
         }
-        int v = 0;
-        if (oneCount*2 >= len){
-            v = 1;
-        }
-        if (mode == 1){
-            return v;
+        char a = '0';   //Define char to avoid cast
+        if (oneCount*2 < len){
+            a += mode;
         }
         else {
-            return 1 -v;
+            a += (1 - mode);
         }
+        return a;
     }
     static int solve2(String fileName) throws IOException{
         LinkedList<String> numList1 = new LinkedList<>(); //Initialise lists
@@ -73,26 +71,16 @@ public class Day3 {
         int i = 0;
         while((numList1.size() > 1)){ //Find 02
             final int j = i;    //Make a final copy of i to use in the lambdas, to please the jvm
-            int mcv1 = mcv(numList1, i,0);
-            if (mcv1 == 0){
-                numList1.removeIf(num -> num.charAt(j) == '1');
-            }
-            else{
-                numList1.removeIf(num -> num.charAt(j) == '0');
-            }
+            final int lcv = mcv(numList1,j,1);
+            numList1.removeIf(num -> num.charAt(j) == lcv);
             i++;
         }
 
         i = 0;
         while((numList2.size() > 1)){  //Find co2
             final int j = i;
-            int mcv2 = mcv(numList2, i,1);
-            if (mcv2 == 0){
-                numList2.removeIf(num -> num.charAt(j) == '0');
-            }
-            else{
-                numList2.removeIf(num -> num.charAt(j) == '1');
-            }
+            final int mcv = mcv(numList2,j,0);
+                numList2.removeIf(num -> num.charAt(j) == mcv);
             i++;
         }
         String s1 = numList1.getFirst();
