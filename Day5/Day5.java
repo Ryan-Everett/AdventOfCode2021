@@ -84,7 +84,6 @@ public class Day5 {
     }
     public static void main(String[] args) throws IOException{
         String fileName = "Inputs/Day5Input.txt";
-        System.out.println(solve1(fileName));
-        System.out.println(solve2(fileName));
+        System.out.println("Answer 1: " + solve1(fileName) + "\nAnswer 2: " + solve2(fileName));
     }
 }
