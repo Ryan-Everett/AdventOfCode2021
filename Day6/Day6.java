@@ -12,12 +12,10 @@ public class Day6 {
         for (String fish : fishString){
             fishList[Integer.parseInt(fish)] += 1;
         }
-        int head = 0;
-        for (int i = 1; i <= N; i++){   //fc(i+1) = fc(i) + fishList[head]
-            long births = fishList[head];
-            fishList[(head + 7)%9] += births;
-            head = (head + 1) % 9;
+        for (int i = 0; i < N; i++){   //i%9 == head of the list
+            fishList[(i + 7)%9] += fishList[i%9];
         }
+        
         long sum = 0;
         for (long fishCount : fishList){
             sum += fishCount;
