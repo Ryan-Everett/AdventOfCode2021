@@ -1,4 +1,4 @@
-package Day8;
+package Day08;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Stack;
 
-public class Day8 {
+public class Day08 {
     static int solve1 (String fileName) throws IOException{
         Scanner sc = new Scanner(new File(fileName));
         int totalDigs = 0;
@@ -109,7 +109,7 @@ public class Day8 {
         return score;
     }
     public static void main(String[] args) throws IOException{
-        String fileName = "Inputs/Day8Input.txt";
+        String fileName = "Inputs/Day08Input.txt";
         System.out.println("Answer 1: " + solve1(fileName));
         System.out.println("Answer 2: " + solve2(fileName));
     }

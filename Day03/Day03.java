@@ -1,4 +1,4 @@
-package Day3;
+package Day03;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 
-public class Day3 {
+public class Day03 {
     static int solve1(String fileName) throws IOException {
         Scanner sc = new Scanner(new File(fileName));
 
@@ -97,7 +97,7 @@ public class Day3 {
         return o2*co2;
     }
     public static void main(String[] args) throws IOException{
-        String fileName = "Inputs/Day3Input.txt";
+        String fileName = "Inputs/Day03Input.txt";
         System.out.println(solve1(fileName));
         System.out.println(solve2(fileName));
     }

@@ -1,4 +1,4 @@
-package Day9;
+package Day09;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Day9 {
+public class Day09 {
     static int solve1(String fileName) throws IOException{
         ArrayList <char []> heightMap = new ArrayList<>();
         Scanner sc = new Scanner(new File(fileName));
@@ -88,7 +88,7 @@ public class Day9 {
         }
     }
     public static void main(String[] args) throws IOException{
-        String fileName = "Inputs/Day9Input.txt";
+        String fileName = "Inputs/Day09Input.txt";
         System.out.println("Answer 1: " + solve1(fileName));
         System.out.println("Answer 2: " + solve2(fileName));
     }

@@ -1,11 +1,11 @@
-package Day5;
+package Day05;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Day5 {
+public class Day05 {
     static int solve1(String fileName) throws IOException{
         Scanner sc = new Scanner(new File(fileName));
         ArrayList<ArrayList<Integer> > grid= new ArrayList<ArrayList<Integer> >();
@@ -83,7 +83,7 @@ public class Day5 {
         return ans;
     }
     public static void main(String[] args) throws IOException{
-        String fileName = "Inputs/Day5Input.txt";
+        String fileName = "Inputs/Day05Input.txt";
         System.out.println("Answer 1: " + solve1(fileName) + "\nAnswer 2: " + solve2(fileName));
     }
 }

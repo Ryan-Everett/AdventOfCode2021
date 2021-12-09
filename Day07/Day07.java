@@ -1,11 +1,11 @@
-package Day7;
+package Day07;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Day7 {
+public class Day07 {
     static int solve (String fileName) throws IOException{
         Scanner sc = new Scanner(new File(fileName));
         int[] vals = Arrays.stream(sc.nextLine().split(",")).mapToInt(Integer::parseInt).toArray();
@@ -41,7 +41,7 @@ public class Day7 {
         return prevMoves;
     }
     public static void main(String[] args) throws IOException{
-        String fileName = "Inputs/Day7Input.txt";
+        String fileName = "Inputs/Day07Input.txt";
         System.out.println("Ans 1: " + solve(fileName) + "\nAns 2: " + solve2(fileName));
     }
 }

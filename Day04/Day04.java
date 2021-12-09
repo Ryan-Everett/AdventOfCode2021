@@ -1,4 +1,4 @@
-package Day4;
+package Day04;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Day4 {
+public class Day04 {
     static int[] solve (String fileName) throws IOException{
         Scanner sc = new Scanner(new File(fileName));
         String drawString = sc.next();
@@ -90,7 +90,7 @@ public class Day4 {
         }
     }
     public static void main(String[] args) throws IOException{
-        int[] ans = solve("Inputs/Day4Input.txt");
+        int[] ans = solve("Inputs/Day04Input.txt");
         System.out.println("Answer 1: " + ans[0] + "\nAnswer 2: " + ans[1]);
     }
 }

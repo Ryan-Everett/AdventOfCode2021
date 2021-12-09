@@ -1,10 +1,10 @@
-package Day2;
+package Day02;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Day2 {
+public class Day02 {
     static int[] solve(String fileName) throws IOException {
         Scanner sc = new Scanner(new File(fileName));
         int x = 0;
@@ -25,7 +25,7 @@ public class Day2 {
         return new int[] {x*aim,x*y};
     }
     public static void main(String[] args) throws IOException{
-        String fileName = "Inputs/Day2Input.txt";
+        String fileName = "Inputs/Day02Input.txt";
         int[] ans = solve(fileName);
         System.out.println("First answer = " + ans[0] + "\nSecond answer = " + ans[1]);
     }
