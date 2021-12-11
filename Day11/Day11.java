@@ -6,78 +6,43 @@ import java.util.Scanner;
 
 public class Day11 {
     static int N = 10;
-    static int solve1 (String fileName) throws IOException{
+    static int[][] readArr(String fileName) throws IOException{
         Scanner sc = new Scanner(new File(fileName));
-        int[][] octos = new int[N][N];
+        int[][] arr = new int[N][N];
         for (int i = 0; i < N; i++){
             String line = sc.nextLine();
             for (int j = 0; j < N; j++){
-                octos[i][j] = line.charAt(j) - '0';
+                arr[i][j] = line.charAt(j) - '0';
             }
         }
-
-        //Both flash and increasing energy level are associative, so the first two parts of each step can be interleaved
-        int flashes = 0;
-        for (int step = 1; step <= 100; step++){
-            for (int i = 0; i < N; i ++){
-                for (int j = 0; j < N; j ++){
-                    if (octos[i][j] == 9){
-                        flash(octos, i, j);
-                    }
-                    else {
-                        octos[i][j] ++;
-                    }
-                }
-            }
-            for (int i = 0; i < N; i ++){
-                for (int j = 0; j < N; j ++){
-                    if (octos[i][j] > 9){   //If i,j has flashed
-                        flashes ++;
-                        octos[i][j] = 0;
-                    }
-                }
-            }
-        }
-        return flashes;
+        return arr;
     }
-
-    static int solve2 (String fileName) throws IOException{
-        Scanner sc = new Scanner(new File(fileName));
-        int[][] octos = new int[N][N];
-        for (int i = 0; i < N; i++){
-            String line = sc.nextLine();
-            for (int j = 0; j < N; j++){
-                octos[i][j] = line.charAt(j) - '0';
-            }
-        }
-
-        int stepNum = 0;
+    //Perform a step and return the number of flashes
+    static int step (int[][] octos){
         int flashesInStep = 0;
-        while(flashesInStep < 100){
-            flashesInStep = 0;
-            for (int i = 0; i < N; i ++){
-                for (int j = 0; j < N; j ++){
-                    if (octos[i][j] == 9){
-                        flash(octos, i, j);
-                    }
-                    else {
-                        octos[i][j] ++;
-                    }
+        //Both flash and increasing energy level are associative, so the first two parts of the step can be interleaved
+        for (int i = 0; i < N; i ++){
+            for (int j = 0; j < N; j ++){
+                if (octos[i][j] == 9){
+                    flash(octos, i, j);
+                }
+                else {
+                    octos[i][j] ++;
                 }
             }
-            for (int i = 0; i < N; i ++){
-                for (int j = 0; j < N; j ++){
-                    if (octos[i][j] > 9){
-                        flashesInStep ++;
-                        octos[i][j] = 0;
-                    }
-                }
-            }
-            stepNum ++;
         }
-        return stepNum;
+        for (int i = 0; i < N; i ++){
+            for (int j = 0; j < N; j ++){
+                if (octos[i][j] > 9){   //If i,j has flashed
+                    flashesInStep ++;
+                    octos[i][j] = 0;
+                }
+            }
+        }
+        return flashesInStep;
     }
-    static void flash(int[][] octos, int i, int j){ //Ran when an octopus has been affected by a flash
+    //Ran when an octopus has been affected by a flash
+    static void flash(int[][] octos, int i, int j){ 
         if((i >= 0) && (j >= 0) && (i < N) && (j < N)){
             octos[i][j] ++;
             if (octos[i][j] == 10) {    //Flash octopus
@@ -91,6 +56,25 @@ public class Day11 {
             }
         }
     }
+    
+    static int solve1 (String fileName) throws IOException{
+        int[][] octos = readArr(fileName);
+        int flashes = 0;
+        for (int step = 1; step <= 100; step++){
+            flashes += step(octos);
+        }
+        return flashes;
+    }
+
+    static int solve2 (String fileName) throws IOException{
+        int[][] octos = readArr(fileName);
+        int stepNum = 0;
+        while(step(octos) < 100){
+            stepNum ++;
+        }
+        return stepNum;
+    }
+
     public static void main(String[] args) throws IOException{
         String fileName = "Inputs/Day11Input.txt";
         System.out.println("Answer 1: " + solve1(fileName));
