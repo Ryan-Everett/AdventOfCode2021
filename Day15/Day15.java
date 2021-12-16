@@ -11,7 +11,7 @@ import java.util.Stack;
     //A* graph search
     // Heuristic h(n) = (iMax - i) + (jMax - j). This heuristic is clearly consistent therefore our solution is always optimal
     // f(n) = risk(n) + h(n)
-    // Run time is very speedy, 1300311 nodes visited in part 2, less than a second to solve both
+    // Run time is very speedy, 249991 nodes visited in part 2, less than a 400ms to solve both
 
 class Node{
     int i, j, risk;
@@ -48,6 +48,7 @@ public class Day15 {
             }
             grid.add(row);
         }
+        System.out.println((iGoal) + " x " + (jGoal));
         return aStarGraph(grid, iGoal, jGoal);
     }
 
@@ -95,6 +96,7 @@ public class Day15 {
                 grid.add(newRow);
             }
         }
+        System.out.println((5*width) * (5*height));
         return aStarGraph(grid, 5*width-1, 5*height - 1);
     }
 
@@ -105,6 +107,9 @@ public class Day15 {
         frontier.add(new Node(0,0,0));
         int visiteds = 0;
         while(!frontier.isEmpty()){
+            while(visited.contains(frontier.peek())){
+                frontier.remove();
+            }
             visiteds ++;
             Node node = frontier.remove();
             visited.add(node);
