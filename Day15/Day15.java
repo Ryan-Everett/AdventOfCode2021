@@ -8,8 +8,7 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 import java.util.Stack;
 
-    //A* graph search. 
-    // Does not revisit co-ords if they have already been visited unless we have found a path to visit them with lower risk
+    //A* graph search
     // Heuristic h(n) = (iMax - i) + (jMax - j). This heuristic is clearly consistent therefore our solution is always optimal
     // f(n) = risk(n) + h(n)
     // Run time is very speedy, 1300311 nodes visited in part 2, less than a second to solve both
@@ -20,9 +19,9 @@ class Node{
         this.i = i; this.j = j; this.risk = risk;
     }
     @Override
-    public boolean equals(Object p){    //Slightly cheeky as this equals is not commutative, this equals is only used when considering if a node has been visited, so we want it to return true if the risk of the new node is higher 
+    public boolean equals(Object p){
         if (p instanceof Node){
-            return (i == ((Node)p).i && j == ((Node)p).j && risk >= ((Node)p).risk);
+            return (i == ((Node)p).i && j == ((Node)p).j);
         }
         return false;
     }
